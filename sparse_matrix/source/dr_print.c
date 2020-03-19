@@ -20,7 +20,12 @@ void	dr_putnbr(int n)
 	char	str[10];
 	int	i;
 	int	digit;
+	int	minus;
 
+	minus = 1;
+	if (n < 0)
+		minus = -1;
+	n *= minus;
 	i = 0;
 	while (n)
 	{
@@ -29,11 +34,12 @@ void	dr_putnbr(int n)
 		n = n / 10;
 		i++;
 	}
+	if (i == 0)
+		dr_putchar('0');
 	while (i)
-	{
-		dr_putchar(str[i]);
-		i--;
-	}
+		dr_putchar(str[i--]);
+	if (minus == -1)
+		dr_putchar('-');
 	dr_putchar(str[i]);
 }
 

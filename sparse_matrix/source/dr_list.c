@@ -121,3 +121,27 @@ t_list	*dr_list_at(t_list *list, unsigned int nbr)
 	return (list = NULL);
 }
 
+void	dr_push_array(t_list **list, int *ar, int len)
+{
+	int i;
+
+	if (*list)
+	{
+		i = 0;
+		while (i < len)
+		{
+			dr_push_tail(*list, ar[i]);
+			i++;
+		}
+	}
+	else if (len > 0)
+	{
+		*list = dr_create_node(ar[0]);
+		i = 1;
+		while (i < len)
+		{
+			dr_push_tail(*list, ar[i]);
+			i++;
+		}
+	}
+}

@@ -7,7 +7,9 @@ CFLAGS=-Wall -Wextra -Werror
 IDIR=include/
 SDIR=source/
 
-all:
+all: print list
+	@$(CC) -c sparse_matrix.c
+	@$(CC) dr_print.o dr_list.o sparse_matrix.o -o sp_test
 
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c 

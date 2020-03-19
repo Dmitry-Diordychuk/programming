@@ -7,20 +7,21 @@ CFLAGS=-Wall -Wextra -Werror
 IDIR=include/
 SDIR=source/
 
-all: print list
+all: print list ring
 	@$(CC) -c sparse_matrix.c
 	@$(CC) dr_print.o dr_list.o sparse_matrix.o -o sp_test
-
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c 
 list:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_list.c 
-test: print list
+ring:
+	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_ring.c
+test: print list ring
 	@$(CC) -c $(CFLAGS) $(SDIR)test.c
-	@$(CC) dr_print.o dr_list.o test.o -o test
+	@$(CC) dr_print.o dr_list.o dr_ring.o test.o -o test
 
 clean:
 	@rm -rf *.o
 
 fclean: clean
-	@rm -rf test
+	@rm -rf test sp_test

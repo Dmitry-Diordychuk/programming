@@ -5,16 +5,20 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
-void	dr_push_tail(t_list *list, int number)
+void	dr_push_tail(t_list **list, int number)
 {
+	t_list	*temp;
 	t_list	*new_tail;
 
+	temp = *list;
 	new_tail = dr_create_node(number);
-	if (new_tail)
+	if (*list == NULL)
+		*list = new_tail;
+	else if (new_tail)
 	{
-		while (list->next != NULL)
-			list = list->next;
-		list->next = new_tail;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new_tail;
 	}
 }
 
@@ -130,7 +134,7 @@ void	dr_push_array(t_list **list, int *ar, int len)
 		i = 0;
 		while (i < len)
 		{
-			dr_push_tail(*list, ar[i]);
+			dr_push_tail(&(*list), ar[i]);
 			i++;
 		}
 	}
@@ -140,7 +144,7 @@ void	dr_push_array(t_list **list, int *ar, int len)
 		i = 1;
 		while (i < len)
 		{
-			dr_push_tail(*list, ar[i]);
+			dr_push_tail(&(*list), ar[i]);
 			i++;
 		}
 	}

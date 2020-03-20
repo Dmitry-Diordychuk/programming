@@ -15,7 +15,7 @@ typedef struct	s_krm
 	t_list	*jc;
 }		t_sp_matrix;
 
-t_sp_matrix	*dr_init_spmatrix()
+t_sp_matrix	*init_spmatrix()
 {
 	t_sp_matrix *new_matrix;
 
@@ -34,38 +34,74 @@ t_sp_matrix	*dr_init_spmatrix()
 void		dr_print_spmatrix(t_sp_matrix *matrix)
 {
 	dr_putstr("\tAN: ");
-	dr_print_list(matrix->an);
+	if (matrix->an)
+		dr_print_list(matrix->an);
 	dr_putstr("\tNR: ");
-	dr_print_list(matrix->nr);
+	if (matrix->nr)
+		dr_print_list(matrix->nr);
 	dr_putstr("\tNC: ");
-	dr_print_list(matrix->nc);
+	if (matrix->nc)
+		dr_print_list(matrix->nc);
 	dr_putstr("\tJR: ");
-	dr_print_list(matrix->jr);
+	if (matrix->jr)
+		dr_print_list(matrix->jr);
 	dr_putstr("\tJC: ");
-	dr_print_list(matrix->jc);
+	if (matrix->jc)
+		dr_print_list(matrix->jc);
 }
 
-t_sp_matrix	*array_tosp_matrix(int **ar, int n, int m)
+void		fill_an_jr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 {
-	t_sp_matrix	*matrix;
-	int 		i;
-	int 		j;
+	int i;
+	int j;
+	int flag_jr;
+	int counter;
 
-	matrix = dr_init_spmatrix();
 	i = 0;
+	counter = 0;
 	while (i < n)
 	{
 		j = 0;
+		flag_jr = 0;
 		while (j < m)
 		{
 			if (ar[i][j] != 0)
 			{
-				dr_push_tail(matrix->an, ar[i][j]);
+				if (flag_jr == 0)
+					dr_push_tail(&((*mtr)->jr), counter);
+				flag_jr = 1;
+				dr_push_tail(&((*mtr)->an), ar[i][j]);
+				counter++;
 			}
 			j++;
 		}
 		i++;
 	}
+}
+
+int		getnext(int m, int ar[m] ,int x)
+{
+	int i;
+
+	i = x;
+	while (1)
+	{
+		i = (i + 1) % m;
+		if (ar[i] != 0)
+		{
+			return (i);
+		}
+		i++;
+	}
+}
+
+t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
+{
+	t_sp_matrix	*matrix;
+
+	matrix = init_spmatrix();
+	fill_an_jr(&matrix, n, m, ar);
+	return (matrix);
 }
 
 int		main(void)
@@ -82,12 +118,7 @@ int		main(void)
 	int jc[4] = {2, 1, 0, 4};
 	t_sp_matrix *sparse_matrix;
 
-	sparse_matrix = dr_init_spmatrix();
-	dr_push_array(&(sparse_matrix->an), an, 7);
-	dr_push_array(&(sparse_matrix->nr), nr, 7);
-	dr_push_array(&(sparse_matrix->nc), nc, 7);
-	dr_push_array(&(sparse_matrix->jr), jr, 4);
-	dr_push_array(&(sparse_matrix->jc), jc, 4);
-	dr_print_spmatrix(sparse_matrix);	
+	sparse_matrix = dr_create_spmatrix(4, 4, matrix);
+	dr_print_spmatrix(sparse_matrix);
 	return (0);
 }

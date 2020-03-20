@@ -6,6 +6,8 @@
 #include "include/dr_print.h"
 #include "include/dr_ring.h"
 
+#define zro -2147483648
+
 typedef struct	s_krm 
 {
 	t_list 	*an;
@@ -79,6 +81,34 @@ void		fill_an_jr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	}
 }
 
+void		fill_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
+{
+	int i;
+	int j;
+	int flag_jc;
+	int k;
+
+	i = 0;
+	k = 0;
+	while (i < n)
+	{
+		j = 0;
+		while (j < m)
+		{
+			if (j < n && i == 0)
+				dr_push_tail(&((*t)->jc), zro);
+			if (ar[i][j] != 0)
+			{
+				if (dr_list_at((*t)->jc, j + 1)->number == zro)
+					dr_list_change((*t)->jc, k, j + 1); 
+				k++;
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
 int		getnext(int m, int ar[m] ,int x)
 {
 	int i;
@@ -101,6 +131,7 @@ t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
 
 	matrix = init_spmatrix();
 	fill_an_jr(&matrix, n, m, ar);
+	fill_jc(&matrix, n, m, ar);
 	return (matrix);
 }
 

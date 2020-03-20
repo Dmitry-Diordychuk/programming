@@ -23,23 +23,24 @@ void	dr_putnbr(int n)
 	int	minus;
 
 	minus = 1;
-	if (n < 0)
+	if (n == -2147483648)
+		dr_putstr("-2147483648");
+	if (n == -2147483648)
+		return ;
+	if (n < 0 || (i = 0))
 		minus = -1;
 	n *= minus;
-	i = 0;
 	while (n)
 	{
 		digit = n % 10;
-		str[i] = digit + '0';
+		str[i++] = digit + '0';
 		n = n / 10;
-		i++;
 	}
 	if (i == 0)
 		dr_putchar('0');
-	while (i)
+	while (i + 1)
 		dr_putchar(str[i--]);
 	if (minus == -1)
 		dr_putchar('-');
-	dr_putchar(str[i]);
 }
 

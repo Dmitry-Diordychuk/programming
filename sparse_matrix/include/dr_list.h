@@ -21,6 +21,7 @@ void	dr_push_tail(t_list **list, int number);
 void	dr_print_list(t_list *list);
 void	dr_push_head(t_list **list, int number);
 void	dr_push_array(t_list **list, int *ar, int len);
+void	dr_list_change(t_list *list, int number, int at);
 int	dr_list_size(t_list *list);
 
 #endif

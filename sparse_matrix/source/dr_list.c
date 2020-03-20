@@ -149,3 +149,18 @@ void	dr_push_array(t_list **list, int *ar, int len)
 		}
 	}
 }
+
+void	dr_list_change(t_list *list, int number, int at)
+{
+	int i;
+
+	i = 1;
+	while (i != at)
+	{
+		if (list->next == NULL)
+			return ;
+		list = list->next;
+		i++;
+	}
+	list->number = number;
+}

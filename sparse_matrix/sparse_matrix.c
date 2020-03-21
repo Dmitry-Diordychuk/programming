@@ -109,6 +109,34 @@ void		fill_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 	}
 }
 
+void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+{
+	int i;
+	int j;
+	int i_start;
+	int k;
+
+	k = 0;
+	while (j <= dr_list_last((*mtr)->jr)->number)
+	{
+		i_start = dr_list_at((*mtr)->jr, 1 + k)->number;
+		i = dr_list_at((*mtr)->jr, 1 + k)->number;
+		if (i == dr_list_last((*mtr)->jr)->number)
+			j = dr_list_size((*mtr)->an);
+		else
+			j = dr_list_at((*mtr)->jr, 2 + k)->number;
+		while (i < j)
+		{
+			if (i == j - 1)
+				dr_push_tail(&((*mtr)->nr), i_start);
+			else
+				dr_push_tail(&((*mtr)->nr), i + 1);
+			i++;
+		}
+		k++;
+	}
+}
+
 int		getnext(int m, int ar[m] ,int x)
 {
 	int i;
@@ -132,6 +160,7 @@ t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
 	matrix = init_spmatrix();
 	fill_an_jr(&matrix, n, m, ar);
 	fill_jc(&matrix, n, m, ar);
+	fill_nr(&matrix, n, m, ar);
 	return (matrix);
 }
 

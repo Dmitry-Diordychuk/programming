@@ -14,20 +14,22 @@ SDIR=source/
 all: print list ring
 	@$(CC) -c $(CFLAGS) sparse_matrix.c
 	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o -o sp_test
-sparse: print list ring
-	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)sparse_matrix.c \
-	$(SDIR)sparse_matrix_packaging.c
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c 
 list:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_list.c 
 ring:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_ring.c
-test: sparse
-	@$(CC) -c $(CFLAGS) $(SDIR)sparse_matrix_test.c #test.c
+sparse: print list ring
+	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)sparse_matrix.c \
+	$(SDIR)sparse_matrix_packaging.c
+test: print list ring
+	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)test.c
+	@$(CC) dr_print.o dr_list.o dr_ring.o test.o -o test 
+sptest: sparse
+	@$(CC) -c $(CFLAGS) $(SDIR)sparse_matrix_test.c
 	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o \
 	sparse_matrix_packaging.o sparse_matrix_test.o -o sp_test
-
 clean:
 	@rm -rf *.o
 

@@ -45,7 +45,7 @@ void	dr_print_list(t_list *list)
 		while (temp->next != NULL)
 		{
 			dr_putnbr(temp->number);
-			dr_putstr(", ");
+			dr_putstr(",\t");
 			temp = temp->next;
 		}
 		dr_putnbr(temp->number);

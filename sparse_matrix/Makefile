@@ -8,8 +8,8 @@ IDIR=include/
 SDIR=source/
 
 all: print list ring
-	@$(CC) -c sparse_matrix.c
-	@$(CC) dr_print.o dr_list.o sparse_matrix.o -o sp_test
+	@$(CC) -c $(CFLAGS) sparse_matrix.c
+	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o -o sp_test
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c 
 list:

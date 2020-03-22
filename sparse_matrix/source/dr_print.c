@@ -11,8 +11,14 @@ void	dr_putchar(char c)
 
 void	dr_putstr(char *str)
 {
-	while (*str != '\0')
-		dr_putchar(*str++);
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+	{
+		dr_putchar(str[i]);
+		i++;
+	}
 }
 
 void	dr_putnbr(int n)
@@ -38,8 +44,8 @@ void	dr_putnbr(int n)
 	}
 	if (i == 0)
 		dr_putchar('0');
-	while (i + 1)
-		dr_putchar(str[i--]);
+	while (i)
+		dr_putchar(str[--i]);
 	if (minus == -1)
 		dr_putchar('-');
 }

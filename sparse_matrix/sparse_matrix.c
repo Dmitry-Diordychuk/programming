@@ -1,6 +1,8 @@
-// Dmitry Diordichuk
-// cort@mail.ru
-// Thu Mar 19 15:37:42 MSK 2020
+/*****************************************************************************/
+/*	Dmitry Diordichuk                                                    */
+/*	cort@mail.ru                                                         */
+/* 	Thu Mar 19 15:37:42 MSK 2020                                         */
+/*****************************************************************************/
 
 #include "include/dr_list.h"
 #include "include/dr_print.h"
@@ -35,6 +37,15 @@ t_sp_matrix	*init_spmatrix()
 
 void		dr_print_spmatrix(t_sp_matrix *matrix)
 {
+	int	i;
+	t_list	*index;
+
+	i = 0;
+	while (i < dr_list_size(matrix->an))
+		dr_push_tail(&index ,i++);
+	dr_putstr("\tIN: ");
+	if (index)
+		dr_print_list(index);
 	dr_putstr("\tAN: ");
 	if (matrix->an)
 		dr_print_list(matrix->an);
@@ -50,13 +61,13 @@ void		dr_print_spmatrix(t_sp_matrix *matrix)
 	dr_putstr("\tJC: ");
 	if (matrix->jc)
 		dr_print_list(matrix->jc);
+	dr_list_clear(&index);
 }
 
-void		fill_an_jr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		fill_an(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 {
 	int i;
 	int j;
-	int flag_jr;
 	int counter;
 
 	i = 0;
@@ -64,14 +75,10 @@ void		fill_an_jr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	while (i < n)
 	{
 		j = 0;
-		flag_jr = 0;
 		while (j < m)
 		{
 			if (ar[i][j] != 0)
 			{
-				if (flag_jr == 0)
-					dr_push_tail(&((*mtr)->jr), counter);
-				flag_jr = 1;
 				dr_push_tail(&((*mtr)->an), ar[i][j]);
 				counter++;
 			}
@@ -81,11 +88,10 @@ void		fill_an_jr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	}
 }
 
-void		fill_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
+void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 {
 	int i;
 	int j;
-	int flag_jc;
 	int k;
 
 	i = 0;
@@ -95,10 +101,14 @@ void		fill_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 		j = 0;
 		while (j < m)
 		{
+			if (i < m && j == 0)
+				dr_push_tail(&((*t)->jr), zro);
 			if (j < n && i == 0)
 				dr_push_tail(&((*t)->jc), zro);
 			if (ar[i][j] != 0)
 			{
+				if (dr_list_at((*t)->jr, i + 1)->number == zro)
+					dr_list_change((*t)->jr, k, i + 1);
 				if (dr_list_at((*t)->jc, j + 1)->number == zro)
 					dr_list_change((*t)->jc, k, j + 1); 
 				k++;
@@ -109,47 +119,86 @@ void		fill_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 	}
 }
 
-void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		indxarr_initnrnc(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 {
-	int i;
-	int j;
-	int i_start;
-	int k;
+	int 	i;
+	int 	j;
+	int 	index;
 
-	k = 0;
-	while (j <= dr_list_last((*mtr)->jr)->number)
+	i = 0;
+	index = 0;
+	while (i < n)
 	{
-		i_start = dr_list_at((*mtr)->jr, 1 + k)->number;
-		i = dr_list_at((*mtr)->jr, 1 + k)->number;
-		if (i == dr_list_last((*mtr)->jr)->number)
-			j = dr_list_size((*mtr)->an);
-		else
-			j = dr_list_at((*mtr)->jr, 2 + k)->number;
-		while (i < j)
+		j = 0;
+		while (j < m)
 		{
-			if (i == j - 1)
-				dr_push_tail(&((*mtr)->nr), i_start);
+			if (ar[i][j] != 0)
+			{
+				dr_push_tail(&((*mtr)->nr), zro);
+				dr_push_tail(&((*mtr)->nc), zro);
+				ar[i][j] = index++;
+			}
 			else
-				dr_push_tail(&((*mtr)->nr), i + 1);
-			i++;
+				ar[i][j] = zro;
+			j++;
 		}
-		k++;
+		i++;
 	}
 }
 
-int		getnext(int m, int ar[m] ,int x)
+void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 {
-	int i;
+	int 	i;
+	int 	j;
+	t_list	*row;
 
-	i = x;
-	while (1)
+	i = 0;
+	while (i < n)
 	{
-		i = (i + 1) % m;
-		if (ar[i] != 0)
+		j = -1;
+		row = NULL;
+		while (++j < m)
+			if (ar[i][j] != zro)
+				dr_push_tail(&row, ar[i][j]);
+		j = dr_list_size(row);
+		dr_loop_list(&row);
+		while (j-- > 0)
 		{
-			return (i);
+			dr_list_change((*mtr)->nr,
+					row->next->number, row->number + 1);
+			row = row->next;
 		}
+		dr_unloop_list(&row);
+		dr_list_clear(&row);
 		i++;
+	}
+}
+
+void		fill_nc(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+{
+	int 	i;
+	int 	j;
+	t_list	*col;
+
+	j = 0;
+	while (j < m)
+	{
+		i = -1;
+		col = NULL;
+		while (++i < n)
+			if (ar[i][j] != zro)
+				dr_push_tail(&col, ar[i][j]);
+		i = dr_list_size(col);
+		dr_loop_list(&col);
+		while (i-- > 0)
+		{
+			dr_list_change((*mtr)->nc,
+					col->next->number, col->number + 1);
+			col = col->next;
+		}
+		dr_unloop_list(&col);
+		dr_list_clear(&col);
+		j++;
 	}
 }
 
@@ -158,9 +207,11 @@ t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
 	t_sp_matrix	*matrix;
 
 	matrix = init_spmatrix();
-	fill_an_jr(&matrix, n, m, ar);
-	fill_jc(&matrix, n, m, ar);
+	fill_an(&matrix, n, m, ar);
+	fill_jr_jc(&matrix, n, m, ar);
+	indxarr_initnrnc(&matrix, n, m, ar);
 	fill_nr(&matrix, n, m, ar);
+	fill_nc(&matrix, n, m, ar);
 	return (matrix);
 }
 
@@ -170,12 +221,6 @@ int		main(void)
 				{9, 4, 0, 7},
 				{5, 0, 0, 0},
 				{0, 2, 0, 8}	};
-
-	int an[7] = {6, 9, 4, 7, 5, 2, 8};
-	int nr[7] = {1, 3, 4, 2, 5, 7, 6};
-	int nc[7] = {3, 5, 6, 7, 2, 1, 4};
-	int jr[4] = {1, 2, 5, 6};
-	int jc[4] = {2, 1, 0, 4};
 	t_sp_matrix *sparse_matrix;
 
 	sparse_matrix = dr_create_spmatrix(4, 4, matrix);

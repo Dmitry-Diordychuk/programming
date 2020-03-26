@@ -1,9 +1,37 @@
-// Dmitry Diordichuk
-// cort@mail.ru
-// Wed Mar 18 20:14:12 STD 2020
+/******************************************************************************/
+/*                                                                            */
+/*                         File: dr_list.c                                    */
+/*                   Created By: Dmitry Diordichuk                            */
+/*                        Email: cort@mail.ru                                 */
+/*                                                                            */
+/*                 File Created: 24th March 2020 10:27:26 pm                  */
+/*                Last Modified: 25th March 2020 2:34:49 pm                   */
+/*                                                                            */
+/******************************************************************************/
 
 #include "dr_list.h"
 #include "dr_print.h"
+
+t_list	*dr_list_intersection(t_list *a, t_list *b)
+{
+	t_list *temp_b;
+	t_list *intersect;
+
+	intersect = NULL;
+	temp_b = b;
+	while (a != NULL)
+	{
+		b = temp_b;
+		while (b != NULL)
+		{
+			if (a->number == b->number)
+				dr_push_tail(&intersect, a->number);
+			b = b->next;
+		}
+		a = a->next;
+	}
+	return (intersect);
+}
 
 void	dr_push_tail(t_list **list, int number)
 {

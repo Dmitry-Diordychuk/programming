@@ -1,10 +1,13 @@
-/*****************************************************************************/
-/*                                                                           */
-/*	Dmitry Diordichuk                                                    */
-/*	cort@mail.ru                                                         */
-/* 	Thu Mar 19 15:37:42 MSK 2020                                         */
-/*                                                                           */
-/*****************************************************************************/
+/******************************************************************************/
+/*                                                                            */
+/*                         File: sparse_matrix.c                              */
+/*                   Created By: Dmitry Diordichuk                            */
+/*                        Email: cort@mail.ru                                 */
+/*                                                                            */
+/*                 File Created: 24th March 2020 10:27:26 pm                  */
+/*                Last Modified: 26th March 2020 12:06:59 am                  */
+/*                                                                            */
+/******************************************************************************/
 
 #include "sparse_matrix.h"
 
@@ -29,6 +32,7 @@ void		dr_print_spmatrix(t_sp_matrix *matrix)
 	int	i;
 	t_list	*index;
 
+	index = NULL;
 	i = 0;
 	while (i < dr_list_size(matrix->an))
 		dr_push_tail(&index ,i++);
@@ -66,3 +70,12 @@ t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
 	return (matrix);
 }
 
+void	dr_free_spmatrix(t_sp_matrix *mtr)
+{
+	dr_list_clear(&(mtr->an));
+	dr_list_clear(&(mtr->jc));
+	dr_list_clear(&(mtr->jr));
+	dr_list_clear(&(mtr->nc));
+	dr_list_clear(&(mtr->nr));
+	free(mtr);
+}

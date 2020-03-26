@@ -1,6 +1,15 @@
-#include "../include/dr_list.h"
-#include "../include/dr_print.h"
-#include "../include/dr_ring.h"
+/******************************************************************************/
+/*                                                                            */
+/*                         File: test.c                                       */
+/*                   Created By: Dmitry Diordichuk                            */
+/*                        Email: cort@mail.ru                                 */
+/*                                                                            */
+/*                 File Created: 24th March 2020 10:27:26 pm                  */
+/*                Last Modified: 26th March 2020 6:31:10 pm                   */
+/*                                                                            */
+/******************************************************************************/
+
+#include "../include/test.h"
 
 int	list_main(void)
 {

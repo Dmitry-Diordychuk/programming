@@ -29,11 +29,12 @@ void	dr_putnbr(int n)
 	int	minus;
 
 	minus = 1;
+	i = 0;
 	if (n == -2147483648)
 		dr_putstr("-2147483648");
 	if (n == -2147483648)
 		return ;
-	if (n < 0 || (i = 0))
+	if (n < 0)
 		minus = -1;
 	n *= minus;
 	while (n)
@@ -44,9 +45,9 @@ void	dr_putnbr(int n)
 	}
 	if (i == 0)
 		dr_putchar('0');
-	while (i)
-		dr_putchar(str[--i]);
 	if (minus == -1)
 		dr_putchar('-');
+	while (i)
+		dr_putchar(str[--i]);
 }
 

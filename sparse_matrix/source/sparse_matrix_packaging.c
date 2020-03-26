@@ -43,16 +43,16 @@ void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 		j = 0;
 		while (j < m)
 		{
-			if (i < m && j == 0)
+			if (i < n && j == 0)
 				dr_push_tail(&((*t)->jr), zro);
-			if (j < n && i == 0)
+			if (j < m && i == 0)
 				dr_push_tail(&((*t)->jc), zro);
 			if (ar[i][j] != 0)
 			{
 				if (dr_list_at((*t)->jr, i + 1)->number == zro)
 					dr_list_change((*t)->jr, k, i + 1);
 				if (dr_list_at((*t)->jc, j + 1)->number == zro)
-					dr_list_change((*t)->jc, k, j + 1); 
+					dr_list_change((*t)->jc, k, j + 1);
 				k++;
 			}
 			j++;

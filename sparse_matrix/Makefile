@@ -1,13 +1,16 @@
-###############################################################################
-#                                                                             #
-#	Dmitry Diordichuk                                                         #
-#	cort@mail.ru                                                              #
-#	Wed Mar 18 20:23:56 STD 2020                                              #
-#                                                                             #
-###############################################################################
+################################################################################
+#                                                                              #
+#                         File: Makefile                                       #
+#                   Created By: Dmitry Diordichuk                              #
+#                        Email: cort@mail.ru                                   #
+#                                                                              #
+#                 File Created: 24th March 2020 10:27:26 pm                    #
+#                Last Modified: 26th March 2020 6:09:08 pm                     #
+#                                                                              #
+################################################################################
 
 CC=gcc
-CFLAGS=-g #-Wall -Wextra -Werror
+CFLAGS=-g -Wall -Wextra -Werror
 IDIR=include/
 SDIR=source/
 
@@ -24,15 +27,14 @@ sparse: print list ring
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)sparse_matrix.c \
 	$(SDIR)sparse_matrix_packaging.c \
 	$(SDIR)sparse_matrix_unpackaging.c
-test: print list ring
-	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)test.c
-	@$(CC) dr_print.o dr_list.o dr_ring.o test.o -o test
-sptest: sparse
+test: sparse
+	@$(CC) -c $(CFLAGS) $(SDIR)test.c
 	@$(CC) -c $(CFLAGS) $(SDIR)sparse_matrix_test.c
 	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o \
 	sparse_matrix_packaging.o \
 	sparse_matrix_unpackaging.o \
-	sparse_matrix_test.o -o sp_test
+	sparse_matrix_test.o \
+	test.o -o test
 clean:
 	@rm -rf *.o
 

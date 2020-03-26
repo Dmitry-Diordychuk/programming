@@ -2,7 +2,7 @@
 #include "../include/dr_print.h"
 #include "../include/dr_ring.h"
 
-int	main(void)
+int	list_main(void)
 {
 	t_list *list;
 	t_list *last;
@@ -21,7 +21,7 @@ int	main(void)
 		dr_putnbr(el_at->number);
 	dr_putchar('\n');
 	dr_unloop_list(&list);
-	dr_putstr("\tList elements:\t\t"); 
+	dr_putstr("\tList elements:\t\t");
 	dr_print_list(list);
 	dr_putstr("\tList size:\t\t");
 	dr_putnbr(dr_list_size(list));

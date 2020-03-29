@@ -14,6 +14,32 @@
 
 
 
+// t_sp_matrix	*dr_spmatrix_add(t_sp_matrix *a, t_sp_matrix *b)
+// {
+// 	int i;
+// 	int j;
+// 	int an;
+// 	int bn;
+
+// 	i = 0;
+// 	while (i < dr_list_size(a->jr))
+// 	{
+// 		j = 0;
+// 		while (j < dr_list_size(a->jc))
+// 		{
+// 			b = dr_get_ij(b, i, j);
+// 			if (!(a = dr_get_ij(a, i, j)))
+// 			{
+
+// 			}
+// 			an = an + bn;
+// 			j++;
+// 		}
+// 		i++;
+// 	}
+// 	return (a);
+// }
+
 int		main(void)
 {
 	int matrix_a[4][6] = {

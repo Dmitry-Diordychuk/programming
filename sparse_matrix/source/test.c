@@ -35,6 +35,12 @@ int	list_main(void)
 	dr_putstr("\tList size:\t\t");
 	dr_putnbr(dr_list_size(list));
 	dr_putchar('\n');
+	dr_putstr("\tList remove:\t\t");
+	dr_list_remove(&list, 3);
+	dr_print_list(list);
+	dr_putstr("\tList insert:\t\t");
+	dr_list_insert(&list, 2, 10);
+	dr_print_list(list);
 	dr_putstr("\tList last element:\t");
 	dr_putnbr(last->number);
 	dr_putchar('\n');

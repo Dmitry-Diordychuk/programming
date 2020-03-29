@@ -12,6 +12,59 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
+void dr_list_insert(t_list **list, int at, int n)
+{
+	int		i;
+	t_list	*cur;
+	t_list	*prev;
+	t_list	*new_elem;
+
+	if (*list && at > 0 && at < dr_list_size(*list))
+	{
+		new_elem = dr_create_node(n);
+		prev = NULL;
+		cur = *list;
+		i = 0;
+		while (i < at - 1)
+		{
+			prev = cur;
+			cur = cur->next;
+			i++;
+		}
+		if (prev)
+			prev->next = new_elem;
+		else
+			*list = new_elem;
+		new_elem->next = cur;
+	}
+}
+
+
+void	dr_list_remove(t_list **list, int at)
+{
+	int		i;
+	t_list	*cur;
+	t_list	*prev;
+
+	if (*list && at > 0 && at <= dr_list_size(*list))
+	{
+		prev = NULL;
+		cur = *list;
+		i = 0;
+		while (i < at - 1)
+		{
+			prev = cur;
+			cur = cur->next;
+			i++;
+		}
+		if (prev)
+			prev->next = cur->next;
+		else
+			*list = (*list)->next;
+		free(cur);
+	}
+}
+
 t_list	*dr_list_intersection(t_list *a, t_list *b)
 {
 	t_list *temp_b;

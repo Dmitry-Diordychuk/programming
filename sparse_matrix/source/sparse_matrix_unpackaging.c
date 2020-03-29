@@ -44,7 +44,7 @@ int		dr_get_ij(t_sp_matrix *mtr, int i, int j)
 	return (dr_list_at(mtr->an, list_ij->number + 1)->number);
 }
 
-int		*dr_get_sprow(t_sp_matrix *mtr, int i)
+int		*dr_get_row(t_sp_matrix *mtr, int i)
 {
 	int *row;
 	int j;
@@ -68,7 +68,7 @@ int		**dr_spto_array(t_sp_matrix *mtr)
 	i = 0;
 	while (i < dr_list_size(mtr->jr))
 	{
-		array[i] = dr_get_sprow(mtr, i);
+		array[i] = dr_get_row(mtr, i);
 		i++;
 	}
 	return (array);

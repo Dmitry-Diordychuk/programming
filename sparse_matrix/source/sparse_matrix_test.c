@@ -13,34 +13,43 @@
 #include "../include/test.h"
 
 
-
 // t_sp_matrix	*dr_spmatrix_add(t_sp_matrix *a, t_sp_matrix *b)
 // {
-// 	int i;
-// 	int j;
-// 	int an;
-// 	int bn;
+// 	int			i;
+// 	int			j;
+// 	t_sp_matrix	*c;
 
 // 	i = 0;
-// 	while (i < dr_list_size(a->jr))
+// 	while (i < dr_list_size(a))
 // 	{
 // 		j = 0;
-// 		while (j < dr_list_size(a->jc))
+// 		while (j < dr_list_size(b))
 // 		{
-// 			b = dr_get_ij(b, i, j);
-// 			if (!(a = dr_get_ij(a, i, j)))
-// 			{
-
-// 			}
-// 			an = an + bn;
+// 			dr_get_ij(a, i, j);
+// 			dr_get_ij(b, i, j);
 // 			j++;
 // 		}
 // 		i++;
 // 	}
-// 	return (a);
+
+
+
+// 	b = a;
+// 	return (b = NULL);
 // }
 
-int		main(void)
+// int				get_col_cor(t_list row, t_sp_matrix *mtr)
+// {
+// 	int i;
+
+// 	while (mtr->jc)
+// 	{
+// 		/* code */
+// 	}
+
+// }
+
+int				main(void)
 {
 	int matrix_a[4][6] = {
 		{ 0, 0, 2, 0,-1, 0},
@@ -56,6 +65,7 @@ int		main(void)
 	};
 	t_sp_matrix *sparse_matrix_a;
 	t_sp_matrix *sparse_matrix_b;
+	//t_sp_matrix *sum;
 	int **array_a;
 	int **array_b;
 	int i;
@@ -67,9 +77,8 @@ int		main(void)
 	dr_print_spmatrix(sparse_matrix_a);
 	dr_putstr("-------------------------------------------------------------\n");
 	dr_print_spmatrix(sparse_matrix_b);
-	array_a = dr_spto_array(sparse_matrix_a);
-	array_b = dr_spto_array(sparse_matrix_b);
 	dr_putstr("Sparse matrix to array:\n");
+	array_a = dr_spto_array(sparse_matrix_a);
 	i = 0;
 	while (i < dr_list_size(sparse_matrix_a->jr))
 	{
@@ -87,6 +96,7 @@ int		main(void)
 	}
 	free(array_a);
 	dr_putstr("-------------------------------------------------------------\n");
+	array_b = dr_spto_array(sparse_matrix_b);
 	i = 0;
 	while (i < dr_list_size(sparse_matrix_b->jr))
 	{
@@ -103,6 +113,27 @@ int		main(void)
 		i++;
 	}
 	free(array_b);
+	// dr_putstr("Sparse matrixies sum:\n");
+	// sum = dr_spmatrix_add(sparse_matrix_a, sparse_matrix_b);
+	// dr_print_spmatrix(sum);
+	// dr_putstr("-------------------------------------------------------------\n");
+	// array_a = dr_spto_array(sparse_matrix_a);
+	// i = 0;
+	// while (i < dr_list_size(sparse_matrix_a->jr))
+	// {
+	// 	j = 0;
+	// 	dr_putstr("\t");
+	// 	while (j < dr_list_size(sparse_matrix_a->jc))
+	// 	{
+	// 		dr_putnbr(array_a[i][j]);
+	// 		dr_putstr("\t ");
+	// 		j++;
+	// 	}
+	// 	free(array_a[i]);
+	// 	dr_putstr("\n");
+	// 	i++;
+	// }
+	// free(array_a);
 	dr_putstr("List tests:\n");
 	list_main();
 	dr_free_spmatrix(sparse_matrix_a);

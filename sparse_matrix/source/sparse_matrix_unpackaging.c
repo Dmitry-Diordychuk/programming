@@ -30,7 +30,7 @@ t_list	*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index)
 	return (elist);
 }
 
-int		dr_get_ij(t_sp_matrix *mtr, int i, int j)
+t_list	*dr_get_ij(t_sp_matrix *mtr, int i, int j)
 {
 	t_list	*list_i;
 	t_list	*list_j;
@@ -40,20 +40,24 @@ int		dr_get_ij(t_sp_matrix *mtr, int i, int j)
 	list_j = get_line_indexes(mtr->jc, mtr->nc, j);
 	list_ij = dr_list_intersection(list_i, list_j);
 	if (list_ij == NULL)
-		return (0);
-	return (dr_list_at(mtr->an, list_ij->number + 1)->number);
+		return (list_ij);
+	return (dr_list_at(mtr->an, list_ij->number + 1));
 }
 
 int		*dr_get_row(t_sp_matrix *mtr, int i)
 {
 	int *row;
 	int j;
+	t_list *pos;
 
 	row = (int*)malloc(sizeof(int) * dr_list_size(mtr->jc));
 	j = 0;
 	while (j < dr_list_size(mtr->jc))
 	{
-		row[j] = dr_get_ij(mtr, i, j);
+		if ((pos = dr_get_ij(mtr, i, j)) != NULL)
+			row[j] = pos->number;
+		else
+			row[j] = 0;
 		j++;
 	}
 	return (row);

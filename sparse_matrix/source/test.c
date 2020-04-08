@@ -17,6 +17,7 @@ int	list_main(void)
 	t_list *last;
 	int nbr = 0;
 	int nbr2 = 3;
+	int finded = 0;
 	t_list *el_at;
 
 	list = dr_create_node(1);
@@ -41,6 +42,10 @@ int	list_main(void)
 	dr_putstr("\tList insert:\t\t");
 	dr_list_insert(&list, 2, 10);
 	dr_print_list(list);
+	dr_putstr("\tList find element position:\t");
+	finded = dr_list_find(list, 3);
+	dr_putnbr(finded);
+	dr_putchar('\n');
 	dr_putstr("\tList last element:\t");
 	dr_putnbr(last->number);
 	dr_putchar('\n');

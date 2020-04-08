@@ -12,6 +12,21 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
+int	dr_list_find(t_list *list, int elem)
+{
+	int i;
+	t_list *node;
+
+	i = 1;
+	while ((node = dr_list_at(list, i)) != NULL)
+	{
+		if (node->number == elem)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
 void dr_list_insert(t_list **list, int at, int n)
 {
 	int		i;

@@ -11,6 +11,8 @@
 
 #include <sparse_matrix.h>
 
+// Распаковка матриц
+
 t_list	*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index)
 {
 	t_list	*elist;
@@ -18,15 +20,17 @@ t_list	*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index)
 	int		next;
 
 	elist = NULL;
+	if (line_index > dr_list_size(jr_or_jc) || line_index < 0)
+		return (elist = NULL);
 	if ((start = dr_list_at(jr_or_jc, line_index + 1)->number) == zro)
 		return (elist = NULL);
 	next = dr_list_at(nr_or_nc, start + 1)->number;
-	dr_push_tail(&elist, next);
 	while (next != start)
 	{
-		next = dr_list_at(nr_or_nc, next + 1)->number;
 		dr_push_tail(&elist, next);
+		next = dr_list_at(nr_or_nc, next + 1)->number;
 	}
+	dr_push_head(&elist, next);
 	return (elist);
 }
 
@@ -76,4 +80,32 @@ int		**dr_spto_array(t_sp_matrix *mtr)
 		i++;
 	}
 	return (array);
+}
+
+//Распаковка строк
+
+int				find_col_recur(int an_index, t_sp_matrix *mtr)
+{
+	int coor;
+
+	if ((coor = dr_list_find(mtr->jc, an_index)) != -1)
+			return (coor - 1);
+	return (find_col_recur(dr_list_at(mtr->nc, an_index + 1)->number, mtr));
+}
+
+t_list			*get_col_coor(t_list *row, t_sp_matrix *mtr)
+{
+	int		i;
+	int		row_size;
+	t_list	*coor_list;
+
+	i = 1;
+	coor_list = NULL;
+	row_size = dr_list_size(row) + 1;
+	while(i < row_size)
+	{
+		dr_push_tail(&coor_list, find_col_recur(dr_list_at(row, i)->number, mtr));
+		i++;
+	}
+	return (coor_list);
 }

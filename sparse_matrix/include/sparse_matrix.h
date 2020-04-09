@@ -38,10 +38,11 @@ void		indxarr_initnrnc(t_sp_matrix **t, int n, int m, int ar[n][m]);
 void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m]);
 void		fill_nc(t_sp_matrix **mtr, int n, int m, int ar[n][m]);
 
+t_list		*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index);
 t_list		*dr_get_ij(t_sp_matrix *mtr, int i, int j);
 int			*dr_get_sprow(t_sp_matrix *mtr, int i);
 int			**dr_spto_array(t_sp_matrix *mtr);
-t_list		*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index);
+int				find_col_recur(int an_index, t_sp_matrix *mtr);
+t_list			*get_col_coor(t_list *row, t_sp_matrix *mtr);
 
 #endif
-

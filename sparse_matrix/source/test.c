@@ -42,6 +42,9 @@ int	list_main(void)
 	dr_putstr("\tList insert:\t\t");
 	dr_list_insert(&list, 2, 10);
 	dr_print_list(list);
+	dr_putstr("\tTest find by predicate:\t");
+	dr_putnbr(dr_list_find_predicate(list, 4, dr_comp));
+	dr_putchar('\n');
 	dr_putstr("\tList find element position:\t");
 	finded = dr_list_find(list, 3);
 	dr_putnbr(finded);

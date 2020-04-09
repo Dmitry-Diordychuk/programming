@@ -11,8 +11,6 @@
 
 #include <sparse_matrix.h>
 
-// Распаковка матриц
-
 t_list	*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index)
 {
 	t_list	*elist;
@@ -81,8 +79,6 @@ int		**dr_spto_array(t_sp_matrix *mtr)
 	}
 	return (array);
 }
-
-//Распаковка строк
 
 int				find_col_recur(int an_index, t_sp_matrix *mtr)
 {

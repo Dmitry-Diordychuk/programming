@@ -54,6 +54,22 @@ void dr_list_insert(t_list **list, int at, int n)
 	}
 }
 
+int	dr_list_find_predicate(t_list *list, int a, int (*predicate)(int a, int b))
+{
+	int		i;
+	t_list	*x;
+
+	i = 1;
+	while ((x = dr_list_at(list, i)) != NULL)
+	{
+		if (predicate(a, x->number) > 0)
+		{
+			return (i);
+		}
+		i++;
+	}
+	return (-1);
+}
 
 void	dr_list_remove(t_list **list, int at)
 {

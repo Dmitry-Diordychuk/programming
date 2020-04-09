@@ -20,12 +20,12 @@
 
 typedef struct	s_krm
 {
-	t_list 	*an;
-	t_list	*nr;
-	t_list	*nc;
-	t_list	*jr;
-	t_list	*jc;
-}		t_sp_matrix;
+				t_list 	*an;
+				t_list	*nr;
+				t_list	*nc;
+				t_list	*jr;
+				t_list	*jc;
+}				t_sp_matrix;
 
 t_sp_matrix	*init_spmatrix();
 t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m]);

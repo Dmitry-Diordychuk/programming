@@ -1,21 +1,17 @@
 /******************************************************************************/
 /*                                                                            */
-/*                         File: test.h                                       */
+/*                         File: dr_math.c                                    */
 /*                   Created By: Dmitry Diordichuk                            */
 /*                        Email: cort@mail.ru                                 */
 /*                                                                            */
-/*                 File Created: 26th March 2020 6:24:31 pm                   */
-/*                Last Modified: 26th March 2020 6:26:43 pm                   */
+/*                 File Created: 9th April 2020 8:28:41 pm                    */
+/*                Last Modified: 9th April 2020 8:31:14 pm                    */
 /*                                                                            */
 /******************************************************************************/
 
-#ifndef __TEST_H__
-# define __TEST_H__
-# include "dr_math.h"
-# include "dr_list.h"
-# include "dr_print.h"
-# include "dr_ring.h"
+#include "dr_math.h"
 
-int	list_main(void);
-
-#endif
+int	dr_comp(int a, int b)
+{
+	return (a - b);
+}

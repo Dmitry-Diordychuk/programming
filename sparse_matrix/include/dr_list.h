@@ -17,8 +17,8 @@
 typedef struct 		s_linked
 {
 	struct s_linked	*next;
-	int		number;
-}			t_list;
+	int				number;
+}					t_list;
 
 t_list	*dr_create_node(int number);
 t_list	*dr_list_last(t_list *list);
@@ -34,5 +34,6 @@ void	dr_push_array(t_list **list, int *ar, int len);
 void	dr_list_change(t_list *list, int number, int at);
 int		dr_list_size(t_list *list);
 int		dr_list_find(t_list *list, int elem);
+int		dr_list_find_predicate(t_list *list, int a, int (*predicate)(int a, int b));
 
 #endif

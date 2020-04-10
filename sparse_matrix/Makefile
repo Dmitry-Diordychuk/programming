@@ -26,7 +26,8 @@ ring:
 sparse: print list ring
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)sparse_matrix.c \
 	$(SDIR)sparse_matrix_packaging.c \
-	$(SDIR)sparse_matrix_unpackaging.c
+	$(SDIR)sparse_matrix_unpackaging.c \
+	$(SDIR)sparse_matrix_sum.c
 math:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_math.c
 test: sparse math
@@ -35,6 +36,7 @@ test: sparse math
 	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o \
 	sparse_matrix_packaging.o \
 	sparse_matrix_unpackaging.o \
+	sparse_matrix_sum.o \
 	sparse_matrix_test.o \
 	dr_math.o \
 	test.o -o test

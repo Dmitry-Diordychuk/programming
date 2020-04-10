@@ -12,6 +12,16 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
+void	dr_list_addlist(t_list **list_a, t_list *list_b)
+{
+	while (list_b->next != NULL)
+	{
+		dr_push_tail(list_a, list_b->number);
+		list_b = list_b->next;
+	}
+	dr_push_tail(list_a, list_b->number);
+}
+
 int	dr_list_find(t_list *list, int elem)
 {
 	int i;

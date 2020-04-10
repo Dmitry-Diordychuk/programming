@@ -12,70 +12,7 @@
 #include "../include/sparse_matrix.h"
 #include "../include/test.h"
 
-int				comp_gr_or_eql(int a, int b)
-{
-	if (a > b)
-		return (1);
-	if (a == b)
-		return (1);
-	else
-		return (-1);
-}
-
-int				*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
-{
-	int i;
-	int j;
-	int in_pos;
-
-	i = 1;
-	while (i < dr_list_size(b_col) + 1)
-	{
-		in_pos = dr_list_find_predicate(*a_col, dr_list_at(b_col, i)->number,
-																comp_gr_or_eql);
-		if (in_pos < 0)
-		{
-			dr_push_head(a_col, dr_list_at(b_col, i)->number);
-			dr_push_head(a_in, -dr_list_at(b_in, i)->number);
-		}
-		dr_list_insert(a_col, in_pos, dr_list_at(b_col, i)->number);
-		dr_list_insert(a_in, in_pos, -dr_list_at(b_in, i)->number);
-		i++;
-	}
-	return (0);
-}
-
-t_sp_matrix		*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
-{
-	int			i;
-	t_sp_matrix	*c;
-	t_list		*a_in;
-	t_list		*a_col;
-	t_list		*b_in;
-	t_list		*b_col;
-
-	i = 0;
-	c = init_spmatrix();
-	while (i < dr_list_size(a->jr))
-	{
-		a_in = get_line_indexes(a->jr, a->nr, i);
-		a_col = get_col_coor(a_in, a);
-		b_in = get_line_indexes(b->jr, b->nr, i);
-		b_col = get_col_coor(b_in, b);
-		merge_ab(&a_in, b_in, &a_col, b_col);
-
-
-		dr_putstr("COL:\t");                                   // Remove print
-		dr_print_list(a_col);
-		dr_putstr("IN:\t");
-		dr_print_list(a_in);
-		dr_putchar('\n');
-		i++;
-	}
-	return (c);
-}
-
-int				main(void)
+int	main(void)
 {
 	int matrix_a[4][6] = {
 		{ 0, 0, 2, 0,-1, 0},
@@ -114,7 +51,7 @@ int				main(void)
 	dr_putstr("-------------------------------------------------------------\n");
 	dr_putstr("Sum spare matrixies:\n");
 	sum = dr_spmatrix_sum(sparse_matrix_a, sparse_matrix_b);
-	//print_spmatrix(sum);
+	dr_print_spmatrix(sum);
 	dr_putstr("\n-------------------------------------------------------------\n");
 	dr_putstr("Sparse matrix to array:\n");
 	array_a = dr_spto_array(sparse_matrix_a);

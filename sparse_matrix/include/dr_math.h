@@ -13,5 +13,6 @@
 # define __DR_MATH_H__
 
 int	dr_comp(int a, int b);
+int	dr_comp_gr_or_eql(int a, int b);
 
 #endif

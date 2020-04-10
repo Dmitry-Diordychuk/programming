@@ -9,7 +9,7 @@
 /*                                                                            */
 /******************************************************************************/
 
-#include <sparse_matrix.h>
+#include "sparse_matrix.h"
 
 t_list	*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index)
 {

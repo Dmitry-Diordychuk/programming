@@ -15,3 +15,13 @@ int	dr_comp(int a, int b)
 {
 	return (a - b);
 }
+
+int	dr_comp_gr_or_eql(int a, int b)
+{
+	if (a > b)
+		return (1);
+	if (a == b)
+		return (1);
+	else
+		return (-1);
+}

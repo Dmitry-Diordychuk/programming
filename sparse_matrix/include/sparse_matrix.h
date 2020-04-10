@@ -15,6 +15,7 @@
 # include "dr_list.h"
 # include "dr_print.h"
 # include "dr_ring.h"
+# include "dr_math.h"
 
 # define zro -2147483648
 
@@ -44,5 +45,9 @@ int			*dr_get_sprow(t_sp_matrix *mtr, int i);
 int			**dr_spto_array(t_sp_matrix *mtr);
 int				find_col_recur(int an_index, t_sp_matrix *mtr);
 t_list			*get_col_coor(t_list *row, t_sp_matrix *mtr);
+
+int			*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col);
+t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b);
+t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b);
 
 #endif

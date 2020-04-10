@@ -12,76 +12,69 @@
 #include "../include/sparse_matrix.h"
 #include "../include/test.h"
 
-// t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
-// {
-// 	int			i;
-// 	int			j;
-// 	int			k;
-// 	int			sum;
-// 	t_sp_matrix	*c;
-// 	t_list		*a_in;
-// 	t_list		*a_col;
-// 	t_list		*b_in;
-// 	t_list		*b_col;
+int		comp_gr_or_eql(int a, int b)
+{
+	if (a > b)
+		return (1);
+	if (a == b)
+		return (1);
+	else
+		return (-1);
+}
 
-// 	i = 0;
-// 	c = init_spmatrix();
-// 	while (i < dr_list_size(a->jr))
-// 	{
-// 		a_in = get_line_indexes(a->jr, a->nr, i);
-// 		a_col = get_col_coor(a_in, a);
-// 		b_in = get_line_indexes(b->jr, b->nr, i);
-// 		b_col = get_col_coor(b_in, b);
+int		*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
+{
+	int i;
+	int j;
+	int in_pos;
 
-// 		j = 1;
-// 		k = 1;
-// 		while ((j < dr_list_size(a_in) + 1) || (k < dr_list_size(b_in) + 1))
-// 		{
-// 			if ((j < dr_list_size(a_in) + 1)
-// 				&& dr_list_at(a_col, j)->number < dr_list_at(b_col, k)->number)
-// 			{
-// 				dr_push_tail(&(c->an), dr_list_at(a->an, dr_list_at(a_in, j)->number + 1)->number);
-// 				j++;
-// 			}
-// 			else if ((k < dr_list_size(b_in) + 1)
-// 				&& dr_list_at(b_col, k)->number < dr_list_at(a_col, j)->number)
-// 			{
-// 				dr_push_tail(&(c->an), dr_list_at(b->an, dr_list_at(b_in, k)->number + 1)->number);
-// 				k++;
-// 			}
-// 			else if (((j < dr_list_size(a_in) + 1) && (k < dr_list_size(b_in) + 1))
-// 				&& dr_list_at(b_col, k)->number == dr_list_at(a_col, j)->number)
-// 			{
-// 				if (sum = dr_list_at(a->an, dr_list_at(a_in, j)->number + 1)->number
-// 										+ dr_list_at(b->an, dr_list_at(b_in, k)->number + 1)->number)
-// 				{
-// 					dr_push_tail(&(c->an), sum);
-// 				}
-// 				j++;
-// 				k++;
-// 			}
-// 		}
-// 		i++;
-// 	}
-// 	return (c);
-// }
+	i = 1;
+	while (i < dr_list_size(b_col) + 1)
+	{
+		in_pos = dr_list_find_predicate(*a_col, dr_list_at(b_col, i)->number,
+																comp_gr_or_eql);
+		if (in_pos < 0)
+		{
+			dr_push_head(a_col, dr_list_at(b_col, i)->number);
+			dr_push_head(a_in, dr_list_at(b_in, i)->number);
+		}
+		dr_list_insert(a_col, in_pos, dr_list_at(b_col, i)->number);
+		dr_list_insert(a_in, in_pos, dr_list_at(b_in, i)->number);
+		i++;
+	}
+	return (0);
+}
 
-// int		*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
-// {
-// 	int i;
-// 	int j;
+t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
+{
+	int			i;
+	int			j;
+	int			k;
+	int			sum;
+	t_sp_matrix	*c;
+	t_list		*a_in;
+	t_list		*a_col;
+	t_list		*b_in;
+	t_list		*b_col;
 
-// 	i = 1;
-// 	while (i < dr_list_size(*a_in) + 1)
-// 	{
-// 		j = 1;
-// 		while (j < dr_list_size(b_in) + 1)
-// 		{
-
-// 		}
-// 		i++;
-// 	}
-// }
+	i = 0;
+	c = init_spmatrix();
+	while (i < dr_list_size(a->jr))
+	{
+		a_in = get_line_indexes(a->jr, a->nr, i);
+		a_col = get_col_coor(a_in, a);
+		b_in = get_line_indexes(b->jr, b->nr, i);
+		b_col = get_col_coor(b_in, b);
+		merge_ab(&a_in, b_in, &a_col, b_col);
+		dr_putstr("COL:\t");
+		dr_print_list(a_col);
+		dr_putstr("IN:\t");
+		dr_print_list(a_in);
+		dr_putchar('\n');
+		i++;
+	}
+	return (c);
+}
 
 int				main(void)
 {
@@ -120,10 +113,10 @@ int				main(void)
 	col_cor = get_col_coor(line_indexies, sparse_matrix_a);
 	dr_print_list(col_cor);
 	dr_putstr("-------------------------------------------------------------\n");
-	// dr_putstr("Sum spare matrixies:\n");
-	// sum = dr_spmatrix_sum(sparse_matrix_a, sparse_matrix_b);
-	// dr_print_spmatrix(sum);
-	// dr_putstr("\n-------------------------------------------------------------\n");
+	dr_putstr("Sum spare matrixies:\n");
+	sum = dr_spmatrix_sum(sparse_matrix_a, sparse_matrix_b);
+	//print_spmatrix(sum);
+	dr_putstr("\n-------------------------------------------------------------\n");
 	dr_putstr("Sparse matrix to array:\n");
 	array_a = dr_spto_array(sparse_matrix_a);
 	i = 0;

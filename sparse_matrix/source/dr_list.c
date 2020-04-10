@@ -34,7 +34,7 @@ void dr_list_insert(t_list **list, int at, int n)
 	t_list	*prev;
 	t_list	*new_elem;
 
-	if (*list && at > 0 && at < dr_list_size(*list))
+	if (*list && at > 0 && at < dr_list_size(*list) + 1)
 	{
 		new_elem = dr_create_node(n);
 		prev = NULL;
@@ -57,17 +57,30 @@ void dr_list_insert(t_list **list, int at, int n)
 int	dr_list_find_predicate(t_list *list, int a, int (*predicate)(int a, int b))
 {
 	int		i;
+	int		save;
 	t_list	*x;
 
 	i = 1;
+	save = -1;
 	while ((x = dr_list_at(list, i)) != NULL)
 	{
 		if (predicate(a, x->number) > 0)
 		{
-			return (i);
+			if (dr_list_at(list, i + 1) != NULL)
+			{
+				save = i;
+				i++;
+				continue;
+			}
+			if (save == -1)
+				return (i);
+			else
+				return (++save);
 		}
 		i++;
 	}
+	if (save != -1)
+		return (save);
 	return (-1);
 }
 

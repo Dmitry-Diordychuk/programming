@@ -12,7 +12,7 @@
 #include "../include/sparse_matrix.h"
 #include "../include/test.h"
 
-int		comp_gr_or_eql(int a, int b)
+int				comp_gr_or_eql(int a, int b)
 {
 	if (a > b)
 		return (1);
@@ -22,7 +22,7 @@ int		comp_gr_or_eql(int a, int b)
 		return (-1);
 }
 
-int		*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
+int				*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
 {
 	int i;
 	int j;
@@ -36,21 +36,18 @@ int		*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
 		if (in_pos < 0)
 		{
 			dr_push_head(a_col, dr_list_at(b_col, i)->number);
-			dr_push_head(a_in, dr_list_at(b_in, i)->number);
+			dr_push_head(a_in, -dr_list_at(b_in, i)->number);
 		}
 		dr_list_insert(a_col, in_pos, dr_list_at(b_col, i)->number);
-		dr_list_insert(a_in, in_pos, dr_list_at(b_in, i)->number);
+		dr_list_insert(a_in, in_pos, -dr_list_at(b_in, i)->number);
 		i++;
 	}
 	return (0);
 }
 
-t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
+t_sp_matrix		*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 {
 	int			i;
-	int			j;
-	int			k;
-	int			sum;
 	t_sp_matrix	*c;
 	t_list		*a_in;
 	t_list		*a_col;
@@ -66,7 +63,9 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		b_in = get_line_indexes(b->jr, b->nr, i);
 		b_col = get_col_coor(b_in, b);
 		merge_ab(&a_in, b_in, &a_col, b_col);
-		dr_putstr("COL:\t");
+
+
+		dr_putstr("COL:\t");                                   // Remove print
 		dr_print_list(a_col);
 		dr_putstr("IN:\t");
 		dr_print_list(a_in);

@@ -40,7 +40,7 @@ void dr_list_insert(t_list **list, int at, int n)
 		prev = NULL;
 		cur = *list;
 		i = 0;
-		while (i < at - 1)
+		while (i < at)
 		{
 			prev = cur;
 			cur = cur->next;

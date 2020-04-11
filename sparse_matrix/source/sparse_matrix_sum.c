@@ -77,6 +77,7 @@ t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b)
 t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 {
 	int			i;
+	int			j;
 	t_sp_matrix	*c;
 	t_list		*a_in;
 	t_list		*a_col;
@@ -85,6 +86,7 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 	t_list		*an;
 
 	i = 0;
+	j = 0;
 	c = init_spmatrix();
 	while (i < dr_list_size(a->jr))
 	{
@@ -95,9 +97,23 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		merge_ab(&a_in, b_in, &a_col, b_col);
 		an = an_sum(a_in, a_col, a, b);
 		dr_list_addlist(&c->an, an);
+		/* fill jr */
+		if (an == NULL)
+			dr_push_tail(&c->jr, zro);
+		else
+		{
+			dr_push_tail(&c->jr, j);
+			while (j < dr_list_size(c->an))
+				j++;
+		}
+		/* */
 		free(an);
 		i++;
 	}
+	free(a_in);
+	free(b_in);
+	free(a_col);
+	free(b_col);
 	return (c);
 }
 

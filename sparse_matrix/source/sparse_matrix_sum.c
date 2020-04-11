@@ -97,15 +97,22 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		merge_ab(&a_in, b_in, &a_col, b_col);
 		an = an_sum(a_in, a_col, a, b);
 		dr_list_addlist(&c->an, an);
-		/* fill jr */
+		/* fill jr nr*/
 		if (an == NULL)
 			dr_push_tail(&c->jr, zro);
 		else
 		{
 			dr_push_tail(&c->jr, j);
+			j++;
 			while (j < dr_list_size(c->an))
+			{
+				dr_push_tail(&c->nr, j);
 				j++;
+			}
+			dr_push_tail(&c->nr, dr_list_last(c->jr)->number);
 		}
+		/* */
+
 		/* */
 		free(an);
 		i++;

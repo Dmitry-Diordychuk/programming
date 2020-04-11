@@ -10,7 +10,7 @@
 ################################################################################
 
 CC=gcc
-CFLAGS=-g #-Wall -Wextra -Werror
+CFLAGS=-g -Wall -Wextra -Werror
 IDIR=include/
 SDIR=source/
 

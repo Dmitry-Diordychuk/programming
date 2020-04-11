@@ -14,10 +14,16 @@
 int			*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
 {
 	int i;
-	int j;
 	int in_pos;
 
 	i = 1;
+	if (*a_in == NULL)
+	{
+		*a_col = b_col;
+		while (i < dr_list_size(b_in) + 1)
+			dr_push_tail(a_in, -(dr_list_at(b_in, i++)->number + 1));
+		return (0);
+	}
 	while (i < dr_list_size(b_col) + 1)
 	{
 		in_pos = dr_list_find_predicate(*a_col, dr_list_at(b_col, i)->number,

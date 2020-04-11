@@ -14,6 +14,8 @@
 
 void	dr_list_addlist(t_list **list_a, t_list *list_b)
 {
+	if (list_b == NULL)
+		return	;
 	while (list_b->next != NULL)
 	{
 		dr_push_tail(list_a, list_b->number);

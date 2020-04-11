@@ -24,6 +24,7 @@ t_list	*dr_create_node(int number);
 t_list	*dr_list_last(t_list *list);
 t_list	*dr_list_at(t_list *list, unsigned int nbr);
 t_list	*dr_list_intersection(t_list *a, t_list *b);
+void	dr_list_rmdup(t_list **list);
 void	dr_list_addlist(t_list **list_a, t_list *list_b);
 void	dr_list_insert(t_list **list, int at, int n);
 void	dr_list_remove(t_list **list, int at);

@@ -12,6 +12,25 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
+void	dr_list_rmdup(t_list **list)
+{
+	int i;
+	int j;
+
+	i = 1;
+	while (i < dr_list_size(*list) + 1)
+	{
+		j = i + 1;
+		while (j < dr_list_size(*list) + 1)
+		{
+			if (dr_list_at(*list, i)->number == dr_list_at(*list, j)->number)
+				dr_list_remove(list, j);
+			j++;
+		}
+		i++;
+	}
+}
+
 void	dr_list_addlist(t_list **list_a, t_list *list_b)
 {
 	if (list_b == NULL)

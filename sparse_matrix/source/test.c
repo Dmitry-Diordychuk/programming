@@ -42,6 +42,10 @@ int	list_main(void)
 	dr_putstr("\tList insert:\t\t");
 	dr_list_insert(&list, 2, 10);
 	dr_print_list(list);
+	dr_putstr("\tList remove duplicate:\t\t");
+	dr_push_head(&list, 3);
+	dr_list_rmdup(&list);
+	dr_print_list(list);
 	dr_putstr("\tTest find by predicate:\t");
 	dr_putnbr(dr_list_find_predicate(list, 4, dr_comp));
 	dr_putchar('\n');

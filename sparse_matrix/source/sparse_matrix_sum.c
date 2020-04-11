@@ -111,8 +111,9 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 			}
 			dr_push_tail(&c->nr, dr_list_last(c->jr)->number);
 		}
-		/* */
-
+		/* fill jc */
+		//dr_list_rmdup(&a_col);
+		//dr_print_list(a_col);
 		/* */
 		free(an);
 		i++;

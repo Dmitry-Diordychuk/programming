@@ -38,6 +38,8 @@ void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 
 	i = 0;
 	k = 0;
+	(*t)->jr = NULL;
+	(*t)->jc = NULL;
 	while (i < n)
 	{
 		j = 0;

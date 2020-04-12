@@ -15,24 +15,24 @@
 int	main(void)
 {
 	int matrix_a[4][6] = {
-		{ 0, 0, 2, 0,-1, 0},
-		{ 4, 0, 3, 3, 7, 0},
-		{-2, 0, 0, 0, 0,-1},
-		{ 0, 1, 0, 1, 0, 0}
-		// { 0, 0, 0, 0, 0, 0},
-		// { 0, 0, 0, 0, 0, 0},
-		// { 0, 0, 0, 0, 0, 0},
-		// { 0, 0, 0, 0, 0, 0},
+		// { 0, 0, 2, 0,-1, 0},
+		// { 4, 0, 3, 3, 7, 0},
+		// {-2, 0, 0, 0, 0,-1},
+		// { 0, 1, 0, 1, 0, 0}
+		{ 0, 0, 0, 0, 0, 1},
+		{ 0, 0, 0, 0, 0, 1},
+		{ 0, 0, 0, 0, 0, 0},
+		{ 0, 0, 0, 0, 0, 0},
 	};
 	int matrix_b[4][6] = {
-		{1, 0,-1, 0, 0, 5},
-		{0, 0, 0, 0,-2, 0},
-		{4, 6, 0, 2, 0, 0},
-		{0,-1, 1, 0, 0, 0}
-		// {0, 0, 0, 0, 0, 0},
-		// {0, 0, 0, 0, 0, 0},
-		// {0, 0, 0, 0, 0, 0},
-		// {0, 0, 0, 0, 0, 0}
+		// {1, 0,-1, 0, 0, 5},
+		// {0, 0, 0, 0,-2, 0},
+		// {4, 6, 0, 2, 0, 0},
+		// {0,-1, 1, 0, 0, 0}
+		{0, 0, 0, 0, 0, 0},
+		{0, 0, 0, 0, 0, -1},
+		{0, 0, 0, 0, 0, 1},
+		{0, 0, 0, 0, 0, 1}
 	};
 	t_sp_matrix	*sparse_matrix_a;
 	t_sp_matrix	*sparse_matrix_b;
@@ -45,8 +45,10 @@ int	main(void)
 	t_list		*col_cor;
 
 	dr_putstr("Array to sparse matrix:\n");
-	sparse_matrix_a = dr_create_spmatrix(4, 6, matrix_a);
-	sparse_matrix_b = dr_create_spmatrix(4, 6, matrix_b);
+	if (!(sparse_matrix_a = dr_create_spmatrix(4, 6, matrix_a)))
+		return (-1);
+	if (!(sparse_matrix_b = dr_create_spmatrix(4, 6, matrix_b)))
+		return (-1);
 	dr_print_spmatrix(sparse_matrix_a);
 	dr_putstr("-------------------------------------------------------------\n");
 	dr_print_spmatrix(sparse_matrix_b);

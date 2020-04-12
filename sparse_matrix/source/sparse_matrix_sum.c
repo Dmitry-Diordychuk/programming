@@ -40,7 +40,7 @@ int			*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col)
 	return (0);
 }
 
-t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b)
+t_list		*an_sum(t_list *in, t_list **col, t_sp_matrix *a, t_sp_matrix *b)
 {
 	int				i;
 	int				index;
@@ -49,10 +49,10 @@ t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b)
 
 	i = 0;
 	c_an = NULL;
-	while (i < dr_list_size(col))
+	while (i < dr_list_size(*col))
 	{
-		if (dr_list_at(col, i + 2) == NULL
-			|| dr_list_at(col, i + 1)->number != dr_list_at(col, i + 2)->number)
+		if (dr_list_at(*col, i + 2) == NULL
+			|| dr_list_at(*col, i + 1)->number != dr_list_at(*col, i + 2)->number)
 		{
 			index = dr_list_at(in, i + 1)->number;
 			if (index < 0)
@@ -66,8 +66,16 @@ t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b)
 			value = dr_list_at(a->an, dr_list_at(in, i + 1)->number + 1)->number
 				+ dr_list_at(b->an, -dr_list_at(in, i + 2)->number)->number;
 			if (value != 0)
+			{
 				dr_push_tail(&c_an, value);
-			i++;
+				i++;
+			}
+			else if (value == 0)
+			{
+				dr_list_remove(col, i + 1);
+				dr_list_remove(col, i + 1);
+				i--;
+			}
 		}
 		i++;
 	}
@@ -78,13 +86,24 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 {
 	int			i;
 	int			j;
+	int			k;
 	t_sp_matrix	*c;
 	t_list		*a_in;
 	t_list		*a_col;
 	t_list		*b_in;
 	t_list		*b_col;
 	t_list		*an;
+	t_list		*jc;
+	t_list		*sum_col;
 
+	sum_col = NULL;
+	jc = NULL;
+	k = 1;
+	while (k < dr_list_size(a->jc) + 1)
+	{
+		dr_push_tail(&jc, zro);
+		k++;
+	}
 	i = 0;
 	j = 0;
 	c = init_spmatrix();
@@ -95,7 +114,7 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		b_in = get_line_indexes(b->jr, b->nr, i);
 		b_col = get_col_coor(b_in, b);
 		merge_ab(&a_in, b_in, &a_col, b_col);
-		an = an_sum(a_in, a_col, a, b);
+		an = an_sum(a_in, &a_col, a, b);
 		dr_list_addlist(&c->an, an);
 		/* fill jr nr*/
 		if (an == NULL)
@@ -111,17 +130,26 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 			}
 			dr_push_tail(&c->nr, dr_list_last(c->jr)->number);
 		}
-		/* fill jc */
-		//dr_list_rmdup(&a_col);
-		//dr_print_list(a_col);
 		/* */
+		dr_list_addlist(&sum_col, dr_list_rmdup(&a_col));
 		free(an);
 		i++;
 	}
+	dr_putstr("\tCOL:");                                                  //DEBUG PRINT
+	dr_print_list(sum_col);
+	/* fill jc */
+	k = 1;
+	while (k < dr_list_size(sum_col) + 1)
+	{
+		if (dr_list_at(jc, dr_list_at(sum_col, k)->number + 1)->number == zro)
+			dr_list_at(jc, dr_list_at(sum_col, k)->number + 1)->number = k - 1;
+		k++;
+	}
+	c->jc = jc;
+	/*      */
 	free(a_in);
 	free(b_in);
-	free(a_col);
-	free(b_col);
+	free(sum_col);
 	return (c);
 }
 

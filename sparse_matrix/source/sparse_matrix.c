@@ -24,6 +24,10 @@ t_sp_matrix	*init_spmatrix()
 		new_matrix->jr = NULL;
 		new_matrix->jr = NULL;
 	}
+	else
+	{
+		dr_putstr("MALLOC ERROR");
+	}
 	return (new_matrix);
 }
 
@@ -35,7 +39,10 @@ void		dr_print_spmatrix(t_sp_matrix *matrix)
 	index = NULL;
 	i = 0;
 	while (i < dr_list_size(matrix->an))
-		dr_push_tail(&index ,i++);
+	{
+		dr_push_tail(&index ,i);
+		i++;
+	}
 	dr_putstr("\tIN: ");
 	if (index)
 		dr_print_list(index);
@@ -62,11 +69,14 @@ t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
 	t_sp_matrix	*matrix;
 
 	matrix = init_spmatrix();
-	fill_an(&matrix, n, m, ar);
-	fill_jr_jc(&matrix, n, m, ar);
-	indxarr_initnrnc(&matrix, n, m, ar);
-	fill_nr(&matrix, n, m, ar);
-	fill_nc(&matrix, n, m, ar);
+	if (matrix)
+	{
+		fill_an(&matrix, n, m, ar);
+		fill_jr_jc(&matrix, n, m, ar);
+		indxarr_initnrnc(&matrix, n, m, ar);
+		fill_nr(&matrix, n, m, ar);
+		fill_nc(&matrix, n, m, ar);
+	}
 	return (matrix);
 }
 

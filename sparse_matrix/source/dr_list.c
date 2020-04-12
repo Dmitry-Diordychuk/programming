@@ -12,7 +12,7 @@
 #include "dr_list.h"
 #include "dr_print.h"
 
-void	dr_list_rmdup(t_list **list)
+t_list	*dr_list_rmdup(t_list **list)
 {
 	int i;
 	int j;
@@ -29,6 +29,7 @@ void	dr_list_rmdup(t_list **list)
 		}
 		i++;
 	}
+	return (*list);
 }
 
 void	dr_list_addlist(t_list **list_a, t_list *list_b)
@@ -121,7 +122,7 @@ void	dr_list_remove(t_list **list, int at)
 	t_list	*cur;
 	t_list	*prev;
 
-	if (*list && at > 0 && at <= dr_list_size(*list))
+	if (*list && at > 0 && at < dr_list_size(*list) + 1)
 	{
 		prev = NULL;
 		cur = *list;
@@ -187,6 +188,10 @@ t_list	*dr_create_node(int number)
 	{
 		new_node->next = NULL;
 		new_node->number = number;
+	}
+	else
+	{
+		dr_putstr("MALLOC ERROR!");
 	}
 	return (new_node);
 }

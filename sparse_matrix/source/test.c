@@ -13,18 +13,18 @@
 
 int	list_main(void)
 {
-	t_list *list;
-	t_list *last;
-	int nbr = 0;
-	int nbr2 = 3;
-	int finded = 0;
-	t_list *el_at;
+	t_list	*list;
+	int		last;
+	int		nbr = 0;
+	int		nbr2 = 3;
+	int		finded = 0;
+	t_list	*el_at;
 
 	list = dr_create_node(1);
 	dr_push_tail(&list, 2);
 	dr_push_tail(&list, 3);
 	dr_push_head(&list, 4);
-	last = dr_list_last(list);
+	last = dr_list_last(list)->number;
 	dr_loop_list(&list);
 	dr_putstr("\tLoop test\t\t");
 	if ((el_at = dr_list_at(list, nbr2)))
@@ -54,7 +54,7 @@ int	list_main(void)
 	dr_putnbr(finded);
 	dr_putchar('\n');
 	dr_putstr("\tList last element:\t");
-	dr_putnbr(last->number);
+	dr_putnbr(last);
 	dr_putchar('\n');
 	while (nbr < dr_list_size(list) + 2)
 	{

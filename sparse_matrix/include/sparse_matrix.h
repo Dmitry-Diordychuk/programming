@@ -47,7 +47,7 @@ int				find_col_recur(int an_index, t_sp_matrix *mtr);
 t_list			*get_col_coor(t_list *row, t_sp_matrix *mtr);
 
 int			*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col);
-t_list		*an_sum(t_list *in, t_list *col, t_sp_matrix *a, t_sp_matrix *b);
+t_list		*an_sum(t_list *in, t_list **col, t_sp_matrix *a, t_sp_matrix *b);
 t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b);
 
 #endif

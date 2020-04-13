@@ -97,6 +97,8 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 	t_list		*an;
 	t_list		*jc;
 	t_list		*sum_col;
+	t_list		*prev_col;
+	t_list		*prev_in;
 
 	sum_col = NULL;
 	jc = NULL;
@@ -137,8 +139,8 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		free(an);
 		i++;
 	}
-	dr_putstr("\tCOL:");                                                  //DEBUG PRINT
-	dr_print_list(sum_col);
+	//dr_putstr("\tCOL:");                                                  //DEBUG PRINT
+	//dr_print_list(sum_col);
 	/* fill jc */
 	k = 1;
 	while (k < dr_list_size(sum_col) + 1)
@@ -148,7 +150,27 @@ t_sp_matrix	*dr_spmatrix_sum(t_sp_matrix *a, t_sp_matrix *b)
 		k++;
 	}
 	c->jc = jc;
-	/*      */
+	/* fill nc */
+	i = 1;
+	prev_col = NULL;
+	prev_in = NULL;
+	int pos;
+	while (i < dr_list_size(sum_col) + 1)
+	{
+		dr_push_tail(&c->nc, dr_list_at(c->jc, dr_list_at(sum_col, i)->number + 1)->number);
+		if ((pos = dr_list_find(prev_col, dr_list_at(sum_col, i)->number)) < 0)
+		{
+			dr_push_tail(&prev_col, dr_list_at(sum_col, i)->number);
+			dr_push_tail(&prev_in, i - 1);
+		}
+		else
+		{
+			dr_list_at(c->nc, dr_list_at(prev_in, pos)->number + 1)->number = i - 1;
+			dr_list_at(prev_in, pos)->number = i - 1;
+		}
+		dr_list_at(sum_col, i)->number = zro;
+		i++;
+	}
 	free(a_in);
 	free(b_in);
 	free(sum_col);

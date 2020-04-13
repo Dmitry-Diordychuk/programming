@@ -274,6 +274,8 @@ t_list	*dr_list_at(t_list *list, unsigned int nbr)
 	unsigned int i;
 
 	i = 0;
+	if (list == NULL)
+		return (list = NULL);
 	while (list->next != NULL)
 	{
 		if (i == nbr - 1)

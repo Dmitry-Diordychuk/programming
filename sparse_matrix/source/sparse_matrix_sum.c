@@ -74,6 +74,8 @@ t_list		*an_sum(t_list *in, t_list **col, t_sp_matrix *a, t_sp_matrix *b)
 			{
 				dr_list_remove(col, i + 1);
 				dr_list_remove(col, i + 1);
+				dr_list_remove(&in, i + 1);
+				dr_list_remove(&in, i + 1);
 				i--;
 			}
 		}

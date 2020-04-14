@@ -10,13 +10,18 @@
 ################################################################################
 
 CC=gcc
-CFLAGS=-g -Wall -Wextra -Werror
+CFLAGS=-g #-Wall -Wextra -Werror
 IDIR=include/
 SDIR=source/
 
-all: print list ring
-	@$(CC) -c $(CFLAGS) sparse_matrix.c
-	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o -o sp_test
+all: sparse math
+	@$(CC) -c $(CFLAGS) $(SDIR)main.c
+	@$(CC) dr_print.o dr_list.o dr_ring.o sparse_matrix.o \
+	sparse_matrix_packaging.o \
+	sparse_matrix_unpackaging.o \
+	sparse_matrix_sum.o \
+	dr_math.o \
+	main.o -o spmatrix;
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c
 list:

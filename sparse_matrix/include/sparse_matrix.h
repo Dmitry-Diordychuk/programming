@@ -29,15 +29,15 @@ typedef struct	s_krm
 }				t_sp_matrix;
 
 t_sp_matrix	*init_spmatrix();
-t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m]);
+t_sp_matrix	*dr_create_spmatrix(int n, int m, int **ar);
 void		dr_print_spmatrix(t_sp_matrix *matrix);
 void		dr_free_spmatrix(t_sp_matrix *mtr);
 
-void		fill_an(t_sp_matrix **mtr, int n, int m, int ar[n][m]);
-void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m]);
-void		indxarr_initnrnc(t_sp_matrix **t, int n, int m, int ar[n][m]);
-void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m]);
-void		fill_nc(t_sp_matrix **mtr, int n, int m, int ar[n][m]);
+void		fill_an(t_sp_matrix **mtr, int n, int m, int **ar);
+void		fill_jr_jc(t_sp_matrix **t, int n , int m, int **ar);
+void		indxarr_initnrnc(t_sp_matrix **t, int n, int m, int **ar);
+void		fill_nr(t_sp_matrix **mtr, int n, int m, int **ar);
+void		fill_nc(t_sp_matrix **mtr, int n, int m, int **ar);
 
 t_list		*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index);
 t_list		*dr_get_ij(t_sp_matrix *mtr, int i, int j);

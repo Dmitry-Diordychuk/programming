@@ -152,7 +152,7 @@ int		spmatrix_input(t_sp_matrix **mtr)
 	}
 	dr_putstr("\tInput quantity of rows: ");
 	size = dr_atoi(dr_getstr());
-	dr_putstr("\tInput x for empty row: ");
+	dr_putstr("\tInput x for empty row:\n");
 	i = 0;
 	while (i < size)
 	{
@@ -164,7 +164,7 @@ int		spmatrix_input(t_sp_matrix **mtr)
 	}
 	dr_putstr("\tInput quantity of columns: ");
 	size = dr_atoi(dr_getstr());
-	dr_putstr("\tInput x for empty column: ");
+	dr_putstr("\tInput x for empty column:\n");
 	i = 0;
 	while (i < size)
 	{
@@ -178,6 +178,7 @@ int		spmatrix_input(t_sp_matrix **mtr)
 	dr_print_spmatrix(*mtr);
 	dr_putstr("\nUnpack:\n");
 	print_sp_as_array(*mtr);
+	dr_putchar('\n');
 }
 
 char	parse_input()
@@ -189,6 +190,10 @@ char	parse_input()
 	i = 0;
 	while (str[i] != '\0')
 	{
+		if (str[i] == 'a')
+			return ('a');
+		if (str[i] == 'b')
+			return ('b');
 		if (str[i] == 'A')
 			return ('A');
 		if (str[i] == 'B')
@@ -202,12 +207,53 @@ char	parse_input()
 	return (-1);
 }
 
+int		array_input(t_sp_matrix **mtr)
+{
+	int i;
+	int j;
+	int k;
+	int row;
+	int col;
+	int **array;
+
+	dr_putstr("\tInput quantity of rows: ");
+	row = dr_atoi(dr_getstr());
+	dr_putstr("\tInput quantity of columns: ");
+	col = dr_atoi(dr_getstr());
+	array = (int**)malloc(sizeof(int*) * row);
+	i = 0;
+	k = 0;
+	while (i < row)
+	{
+		dr_putstr("\n\t");
+		array[i] = (int*)malloc(sizeof(int*) * col);
+		j = 0;
+		while (j < col)
+		{
+			dr_putstr("Index ");
+			dr_putnbr(k);
+			dr_putstr(" : ");
+			array[i][j] = dr_atoi(dr_getstr());
+			dr_putstr("\t");
+			j++;
+			k++;
+		}
+		i++;
+	}
+	dr_putstr("\n\tPack:\n");
+	*mtr = dr_create_spmatrix(row, col, array);
+	dr_print_spmatrix(*mtr);
+	dr_putstr("\n");
+}
+
 int	main(void)
 {
 	t_sp_matrix	*sparse_matrix_a;
 	t_sp_matrix	*sparse_matrix_b;
 	char 		ch;
 
+	sparse_matrix_a = NULL;
+	sparse_matrix_b = NULL;
 	ch = 1;
 	while(1)
 	{
@@ -219,19 +265,41 @@ int	main(void)
 			dr_putstr("Press 'B' for B matrix input (KRM).\n");
 			dr_putstr("Press '+' for A + B sum (destination matrix A).\n");
 			dr_putstr("Press 'q' for quit.\n");
+			if (sparse_matrix_a != NULL)
+			{
+				dr_putstr("A: \n");
+				dr_print_spmatrix(sparse_matrix_a);
+			}
+			if (sparse_matrix_b != NULL)
+			{
+				dr_putstr("B: \n");
+				dr_print_spmatrix(sparse_matrix_b);
+			}
 		}
 		ch = parse_input();
 		switch (ch)
 		{
 		case 'a':
+			if (sparse_matrix_a != NULL)
+				free(sparse_matrix_a);
+			dr_putstr("\n\tInput A:\n");
+			array_input(&sparse_matrix_a);
 			break;
 		case 'b':
+			if (sparse_matrix_b != NULL)
+				free(sparse_matrix_b);
+			dr_putstr("\n\tInput B:\n");
+			array_input(&sparse_matrix_b);
 			break;
 		case 'A':
+			if (sparse_matrix_a != NULL)
+				free(sparse_matrix_a);
 			dr_putstr("\n\tInput A (KRM):\n");
 			spmatrix_input(&sparse_matrix_a);
 			break;
 		case 'B':
+			if (sparse_matrix_b != NULL)
+				free(sparse_matrix_b);
 			dr_putstr("\n\tInput B (KRM):\n");
 			spmatrix_input(&sparse_matrix_b);
 			break;
@@ -242,10 +310,15 @@ int	main(void)
 			dr_print_spmatrix(sparse_matrix_a);
 			dr_putstr("\nUnpack:\n");
 			print_sp_as_array(sparse_matrix_a);
+			dr_putchar('\n');
 			break;
 		}
 		case 'q':
 		{
+			if (sparse_matrix_a != NULL)
+				free(sparse_matrix_a);
+			if (sparse_matrix_b != NULL)
+				free(sparse_matrix_b);
 			dr_putstr("\n");
 			return (0);
 			break;

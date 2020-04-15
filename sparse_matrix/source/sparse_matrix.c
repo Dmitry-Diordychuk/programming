@@ -64,7 +64,7 @@ void		dr_print_spmatrix(t_sp_matrix *matrix)
 	dr_list_clear(&index);
 }
 
-t_sp_matrix	*dr_create_spmatrix(int n, int m, int ar[n][m])
+t_sp_matrix	*dr_create_spmatrix(int n, int m, int **ar)
 {
 	t_sp_matrix	*matrix;
 

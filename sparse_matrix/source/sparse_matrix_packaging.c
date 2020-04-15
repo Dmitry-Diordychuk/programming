@@ -6,7 +6,7 @@
 
 #include "sparse_matrix.h"
 
-void		fill_an(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		fill_an(t_sp_matrix **mtr, int n, int m, int **ar)
 {
 	int i;
 	int j;
@@ -30,7 +30,7 @@ void		fill_an(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	}
 }
 
-void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
+void		fill_jr_jc(t_sp_matrix **t, int n , int m, int **ar)
 {
 	int i;
 	int j;
@@ -63,7 +63,7 @@ void		fill_jr_jc(t_sp_matrix **t, int n , int m, int ar[n][m])
 	}
 }
 
-void		indxarr_initnrnc(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		indxarr_initnrnc(t_sp_matrix **mtr, int n, int m, int **ar)
 {
 	int 	i;
 	int 	j;
@@ -90,7 +90,7 @@ void		indxarr_initnrnc(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	}
 }
 
-void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		fill_nr(t_sp_matrix **mtr, int n, int m, int **ar)
 {
 	int 	i;
 	int 	j;
@@ -118,7 +118,7 @@ void		fill_nr(t_sp_matrix **mtr, int n, int m, int ar[n][m])
 	}
 }
 
-void		fill_nc(t_sp_matrix **mtr, int n, int m, int ar[n][m])
+void		fill_nc(t_sp_matrix **mtr, int n, int m, int **ar)
 {
 	int 	i;
 	int 	j;

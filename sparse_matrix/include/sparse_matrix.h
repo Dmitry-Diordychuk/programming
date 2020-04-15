@@ -43,8 +43,8 @@ t_list		*get_line_indexes(t_list *jr_or_jc, t_list *nr_or_nc, int line_index);
 t_list		*dr_get_ij(t_sp_matrix *mtr, int i, int j);
 int			*dr_get_sprow(t_sp_matrix *mtr, int i);
 int			**dr_spto_array(t_sp_matrix *mtr);
-int				find_col_recur(int an_index, t_sp_matrix *mtr);
-t_list			*get_col_coor(t_list *row, t_sp_matrix *mtr);
+int			find_col_recur(int an_index, t_sp_matrix *mtr);
+t_list		*get_col_coor(t_list *row, t_sp_matrix *mtr);
 
 int			*merge_ab(t_list **a_in, t_list *b_in, t_list **a_col, t_list *b_col);
 t_list		*an_sum(t_list *in, t_list **col, t_sp_matrix *a, t_sp_matrix *b);

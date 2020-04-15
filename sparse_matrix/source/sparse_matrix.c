@@ -22,7 +22,7 @@ t_sp_matrix	*init_spmatrix()
 		new_matrix->nr = NULL;
 		new_matrix->nc = NULL;
 		new_matrix->jr = NULL;
-		new_matrix->jr = NULL;
+		new_matrix->jc = NULL;
 	}
 	else
 	{

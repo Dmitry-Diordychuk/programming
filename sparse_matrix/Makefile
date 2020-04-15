@@ -21,7 +21,7 @@ all: sparse math
 	sparse_matrix_unpackaging.o \
 	sparse_matrix_sum.o \
 	dr_math.o \
-	main.o -o spmatrix;
+	main.o -o spmatrix.exe
 print:
 	@$(CC) -c $(CFLAGS) -I$(IDIR) $(SDIR)dr_print.c
 list:

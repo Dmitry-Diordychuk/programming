@@ -1,1 +1,97 @@
-<mxfile host="app.diagrams.net" modified="2021-01-29T06:15:44.073Z" agent="5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" version="14.2.7" etag="BRt3TZbdVrnv-p6n6SH4" type="github"><diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">7VhZc9MwEP41Hp5gfBQnecRp0wKhU2ihw6NiK7aI7DWynINfzyqWYzsOOYD0yDQv0a43K2m/b4/YcPrx/FKQNPoEAeWGbQZzwzk3bNuybQe/lGZRaLq9bqEIBQu0UaW4Zb+oVppam7OAZg1DCcAlS5tKH5KE+rKhI0LArGk2Bt7cNSUhbSlufcLb2nsWyEjfwu5U+ivKwqjc2XJ7xZOYlMb6JllEApjVVM6F4fQFgCxW8bxPuQpeGZf794t7Ppy4lx8+Zz/JV+/j3fW314WzwSE/WV1B0ET+X9d24XpKeK7jpe8qF2UABeRJQJUT03C8SMYclxYuf1ApFxpwkktAFQgZQQgJ4UOAVNuNIZHazFIyTYJ3CliURxz8SaEaMM71Hihp+y5KmRQwWWGnHKyAUMacjCj3iD8JlwftAweBjxJIqHIVIBn0XarDXVRab8/YagwyyIVPt9jpbJFEhHSbP7ewU+er8VQjd0khplIs0EBQTiSbNslMdE6EK7sKd1xo6A+ggdOiwZDEqcp6oFnySuJqBmKyhRsKl1nEJL1NyTJAMywnTb7UeYBX9UJOskyjuAPkw0CaUiHpfGtYy6euzu2yuGlxVlUKq0z/qFYlzswjAXHWAuI7Fs+XlPyXlHT3TMmyY+3MSU2Wkhh7p6j2dAMskTUTGI8zPNg6dVYb/j2b3rbYdA0tMu3G41nT7ZHI1DmMS9aT55L7hxbhcgyDNxK4CtUq5XkYIlnQXWI4g3btiiAe5dnudtHAWDFoQGLGVbyuKJ9SyXyyoakQzkLc99xHuKnYTB7ckiUhSm4l3S3JivX3iM2m02w2K7nebcwN3aZ7rG7TaWF6g+gV0NkmX+J7Yh3fsddA6D12y+/uU6SfdQl+8I5fVtPdLd/as0xr9phvHPw0CPT0p4DeXjPlyxhwHIbZpzYIlCes8cnL+ag9CYxykSwHAcjlyySwbRKwNzWhB50EykJYA/ULTQlDMM3hKc4B6//8z5zHngPKStGEgKuY2maRYSeGwfos5ljHwwDF6k1tUQqr993OxW8=</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-01-30T02:09:13.622Z" agent="5.0 (Macintosh; Intel Mac OS X 11_1_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36" etag="LW4aCe4Q4-zcZv_uN1yi" version="14.2.7" type="github">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="786" dy="489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="axndH700DG8L_arLusx5-2" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-0" target="axndH700DG8L_arLusx5-1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;fontFamily=Times New Roman;fontSize=14;dashed=1;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-0" target="axndH700DG8L_arLusx5-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-0" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px&quot;&gt;Начало&lt;/font&gt;" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="185" y="90" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-1" target="axndH700DG8L_arLusx5-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-1" value="&lt;font style=&quot;font-size: 14px&quot; face=&quot;Times New Roman&quot;&gt;Поместить в список Open стартовый узел S&lt;/font&gt;" style="whiteSpace=wrap;html=1;dashed=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="172.5" y="190" width="145" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-11" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-5" target="axndH700DG8L_arLusx5-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-34" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-5" target="axndH700DG8L_arLusx5-33">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-5" value="&lt;font style=&quot;font-size: 14px&quot; face=&quot;Times New Roman&quot;&gt;Пока список Open не пуст или не содержит конечный узел G&lt;/font&gt;" style="strokeWidth=1;html=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;verticalAlign=bottom;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="170.62" y="290" width="148.75" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-7" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 14px&quot;&gt;Конец&lt;/font&gt;" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.start" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="590" y="295" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-13" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-10" target="axndH700DG8L_arLusx5-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-10" value="Из списка Open берется верхний узел Current" style="whiteSpace=wrap;html=1;strokeWidth=1;fontSize=14;fontFamily=Times New Roman;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="168.75" y="390" width="152.5" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-15" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-12" target="axndH700DG8L_arLusx5-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-12" value="Вычисляется расстояние через этот узел" style="whiteSpace=wrap;html=1;strokeWidth=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="168.75" y="480" width="151.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-31" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-14" target="axndH700DG8L_arLusx5-29">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-14" value="В список Open добавляются соседние узлы&amp;nbsp;" style="whiteSpace=wrap;html=1;strokeWidth=1;fontSize=14;fontFamily=Times New Roman;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="168.75" y="580" width="151.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-16" target="axndH700DG8L_arLusx5-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-16" value="&lt;font style=&quot;font-size: 14px&quot; face=&quot;Times New Roman&quot;&gt;Узел Current добавляется в список Close&lt;/font&gt;" style="whiteSpace=wrap;html=1;strokeWidth=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="169.68" y="770" width="151.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-21" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-19">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="170" y="330" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="151" y="900" />
+              <mxPoint x="151" y="330" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-19" value="" style="strokeWidth=1;shape=mxgraph.flowchart.loop_limit;whiteSpace=wrap;rotation=180;flipH=0;flipV=0;horizontal=1;verticalAlign=middle;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="169.68" y="870" width="150.62" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-23" value="Цикл 1&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="204.38" y="290" width="80" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-24" value="Цикл 1&amp;nbsp;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="205.31" y="885" width="80" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-25" value="" style="strokeWidth=1;html=1;shape=mxgraph.flowchart.annotation_1;align=left;pointerEvents=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="390" y="58.75" width="21" height="122.5" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-27" value="&lt;b&gt;Входные данные:&lt;br&gt;&lt;/b&gt;S - Стартовый узел&lt;br&gt;G - Конечный узел&lt;br&gt;M - Матрица пространства поиска&lt;br&gt;&lt;br&gt;&lt;b&gt;Выходные данные:&lt;br&gt;&lt;/b&gt;P - Список узлов состовляюших путь&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="414" y="58.75" width="236" height="121.25" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-32" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=classic;endFill=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-29" target="axndH700DG8L_arLusx5-16">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-29" value="Поле Parent соседних узлов указывает на Current" style="whiteSpace=wrap;html=1;strokeWidth=1;fontSize=14;fontFamily=Times New Roman;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="169.05" y="670" width="151.25" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-35" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=classic;endFill=1;fontFamily=Times New Roman;fontSize=14;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="axndH700DG8L_arLusx5-33" target="axndH700DG8L_arLusx5-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="axndH700DG8L_arLusx5-33" value="Путь вычисляется переходом от узла к узлу через поле Parent начиная от узла G" style="whiteSpace=wrap;html=1;strokeWidth=1;fontFamily=Times New Roman;fontSize=14;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="370" y="290" width="170.25" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
